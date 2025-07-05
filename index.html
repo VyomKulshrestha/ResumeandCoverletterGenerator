@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume & Cover Letter Writer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-file-alt"></i> Resume & Cover Letter Writer</h1>
+                <p>Create professional resumes and cover letters with AI assistance</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="form-container">
+                <div class="progress-bar">
+                    <div class="step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Personal Info</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Education</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Experience</span>
+                    </div>
+                    <div class="step" data-step="4">
+                        <span class="step-number">4</span>
+                        <span class="step-title">Job Target</span>
+                    </div>
+                </div>
+
+                <form id="resumeForm" class="form">
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-step active" id="step-1">
+                        <h2><i class="fas fa-user"></i> Personal Information</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" name="address">
+                            </div>
+                            <div class="form-group">
+                                <label for="linkedin">LinkedIn Profile</label>
+                                <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                            </div>
+                            <div class="form-group">
+                                <label for="website">Personal Website/Portfolio</label>
+                                <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="summary">Professional Summary (Optional)</label>
+                            <textarea id="summary" name="summary" rows="4" placeholder="Brief description of your professional background and career goals..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Education -->
+                    <div class="form-step" id="step-2">
+                        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                        <div id="education-container">
+                            <div class="education-entry">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="degree">Degree/Certificate *</label>
+                                        <input type="text" name="degree" required placeholder="e.g., Bachelor of Science">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="field">Field of Study *</label>
+                                        <input type="text" name="field" required placeholder="e.g., Computer Science">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="school">School/Institution *</label>
+                                        <input type="text" name="school" required placeholder="e.g., University of Technology">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="graduationYear">Graduation Year</label>
+                                        <input type="number" name="graduationYear" min="1960" max="2030">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gpa">GPA (Optional)</label>
+                                        <input type="text" name="gpa" placeholder="e.g., 3.8/4.0">
+                                    </div>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="achievements">Relevant Coursework/Achievements</label>
+                                    <textarea name="achievements" rows="3" placeholder="List relevant courses, honors, awards, or academic achievements..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addEducation()">
+                            <i class="fas fa-plus"></i> Add Another Education
+                        </button>
+                    </div>
+
+                    <!-- Step 3: Work Experience -->
+                    <div class="form-step" id="step-3">
+                        <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                        <div id="experience-container">
+                            <div class="experience-entry">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="jobTitle">Job Title *</label>
+                                        <input type="text" name="jobTitle" required placeholder="e.g., Software Developer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company">Company *</label>
+                                        <input type="text" name="company" required placeholder="e.g., Tech Solutions Inc.">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="startDate">Start Date</label>
+                                        <input type="month" name="startDate">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="endDate">End Date</label>
+                                        <input type="month" name="endDate" placeholder="Leave blank if current">
+                                    </div>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="responsibilities">Key Responsibilities & Achievements</label>
+                                    <textarea name="responsibilities" rows="5" required placeholder="• Developed and maintained web applications using React and Node.js&#10;• Led a team of 3 developers on multiple projects&#10;• Improved system performance by 40% through code optimization&#10;• Collaborated with cross-functional teams to deliver products on time"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addExperience()">
+                            <i class="fas fa-plus"></i> Add Another Experience
+                        </button>
+                    </div>
+
+                    <!-- Step 4: Job Target -->
+                    <div class="form-step" id="step-4">
+                        <h2><i class="fas fa-target"></i> Job Target</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="targetRole">Target Job Role *</label>
+                                <input type="text" id="targetRole" name="targetRole" required placeholder="e.g., Senior Software Engineer">
+                            </div>
+                            <div class="form-group">
+                                <label for="targetCompany">Target Company (Optional)</label>
+                                <input type="text" id="targetCompany" name="targetCompany" placeholder="e.g., Google, Microsoft">
+                            </div>
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <select id="industry" name="industry">
+                                    <option value="">Select Industry</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="education">Education</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="sales">Sales</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="consulting">Consulting</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="experienceLevel">Experience Level</label>
+                                <select id="experienceLevel" name="experienceLevel">
+                                    <option value="entry">Entry Level (0-2 years)</option>
+                                    <option value="mid">Mid Level (3-7 years)</option>
+                                    <option value="senior">Senior Level (8+ years)</option>
+                                    <option value="executive">Executive Level</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="skills">Key Skills (comma-separated)</label>
+                            <textarea id="skills" name="skills" rows="3" placeholder="JavaScript, Python, React, Node.js, SQL, Project Management, Team Leadership..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="jobDescription">Job Description (Optional)</label>
+                            <textarea id="jobDescription" name="jobDescription" rows="5" placeholder="Paste the job description here to create a more targeted resume and cover letter..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="form-navigation">
+                        <button type="button" id="prevBtn" class="nav-btn prev-btn">
+                            <i class="fas fa-chevron-left"></i> Previous
+                        </button>
+                        <button type="button" id="nextBtn" class="nav-btn next-btn">
+                            Next <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button type="submit" id="generateBtn" class="generate-btn" style="display: none;">
+                            <i class="fas fa-magic"></i> Generate Resume & Cover Letter
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-container" id="results-container" style="display: none;">
+                <div class="results-header">
+                    <h2>Generated Documents</h2>
+                    <div class="results-actions">
+                        <button id="edit-btn" class="btn btn-secondary">📝 Edit</button>
+                        <button id="download-btn" class="btn btn-primary">📥 Download PDF</button>
+    
+                    </div>
+                </div>
+
+                <div class="document-tabs">
+                    <button class="tab-btn active" onclick="showDocument('resume')">
+                        <i class="fas fa-file-alt"></i> Resume
+                    </button>
+                    <button class="tab-btn" onclick="showDocument('cover-letter')">
+                        <i class="fas fa-envelope"></i> Cover Letter
+                    </button>
+                </div>
+
+                <div class="document-preview">
+                    <div id="resume-content" class="document-content active">
+                        <!-- Resume content will be inserted here -->
+                    </div>
+                    <div id="cover-letter-content" class="document-content">
+                        <!-- Cover letter content will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+                <div class="loading-content">
+                    <div class="loading-spinner"></div>
+                    <h3>Generating Your Documents</h3>
+                    <p>AI is crafting your professional resume and cover letter...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
